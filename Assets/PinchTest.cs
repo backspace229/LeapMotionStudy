@@ -3,6 +3,7 @@ using System.Collections;
 using Leap;
 
 public class PinchTest : MonoBehaviour {
+    Hand hand;
 
 	// Use this for initialization
 	void Start () {
@@ -10,7 +11,7 @@ public class PinchTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Hand hand = new Hand();
-        Debug.Log(hand.PinchStrength);
+        hand = new Hand();
+        Debug.Log(Mathf.Round(hand.PinchStrength * 100));
 	}
 }
