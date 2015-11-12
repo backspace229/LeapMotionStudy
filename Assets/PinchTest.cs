@@ -2,8 +2,9 @@
 using System.Collections;
 using Leap;
 
-public class PinchTest : MonoBehaviour {
-    Hand hand;
+public class PinchTest : MonoBehaviour
+{
+    private Controller controller = new Controller();
 
 	// Use this for initialization
 	void Start () {
@@ -11,7 +12,11 @@ public class PinchTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        hand = new Hand();
-        Debug.Log(Mathf.Round(hand.PinchStrength * 100));
-	}
+        Frame frame = controller.Frame();
+        HandList hands = frame.Hands;
+
+        Hand hand = hands[0];
+        float pinchPercent = hand.PinchStrength;
+        Debug.Log(pinchPercent);
+    }
 }
